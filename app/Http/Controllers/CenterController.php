@@ -8,12 +8,12 @@ use App\Models\Center;
 class CenterController extends Controller
 {
     //
-    public function index(int $centerId){
-
-        //dd(Center::all());
-        $User = Center::find($centerId);
-        dd($User->Name);
-
-        return view('welcome');
+    public function index (){
+        return Center::all();
     }
+
+    public function show (Request $center){
+        return Center::find($center);
+    }
+
 }
