@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use DB;
 
 class AppointmentController extends Controller
 {
@@ -13,12 +14,7 @@ class AppointmentController extends Controller
     public function index()
     {
        
-        // return  DB::table('appointments')
-        // ->select(DB::raw('count(*) as count, HOUR(data) as hour'))
-        // ->whereDate('data', '=', Carbon::now()->toDateString())
-        // ->groupBy('hour')
-        // ->get();
-        
+        return DB::table('appointments')->select(DB::raw('count(*) as count, HOUR(date) as hour'))->where('date', '>','2023-05-14')->where('date', '<','2023-05-15')->groupBy('hour')->get();
     }
 
     /**
